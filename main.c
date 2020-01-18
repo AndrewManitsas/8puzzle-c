@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "misc.h"
+#include "search.h"
 
 unsigned int nodesExpanded;
 unsigned int nodesGenerated;
@@ -21,6 +22,7 @@ int main ()
 	randArrayInitialization(*initialArray);
 
 	//Check the array
+	/*
 	printf("Initialized array:\n------------\n");
 	for (i = 0; i < 3; i++)
 	{
@@ -40,6 +42,9 @@ int main ()
 		}
 		printf("\n------------\n");
 	}
+	*/
+
+	BFSSearch(*initialArray, *targetArray);
 
 	return 0;
 }
