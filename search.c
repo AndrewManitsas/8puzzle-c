@@ -11,6 +11,7 @@ extern double runtime; //in milliseconds
 int searchFrontierHead = 0, searchFrontierTail = 0;
 
 typedef struct TreeNode TreeNode;
+typedef struct SearchFrontierQueue;
 
 struct TreeNode
 {
@@ -19,12 +20,48 @@ struct TreeNode
 	int action;
 	int pathCost;
 	int pathDepth;
-	//Maybe a pointer list with the children?	
+	int children[4];
 };
 
-void initializeSearchFrontierQueue(int *head, int *tail)
+struct SearchFrontierQueue
 {
-	*head = *tail = 0;
+	TreeNode *val;
+	struct SearchFrontierQueue *next;
+};
+
+struct SearchFrontierQueue *head = NULL;
+struct SearchFrontierQueue *tail = NULL;
+
+void enQueueSearchFrontier(struct SearchFrontierQueue *head, TreeNode *val)
+{
+	struct SearchFrontierQueue *current = head;
+
+	while (current->next != NULL)
+	{
+		current = current->next;
+	}
+	
+	current->next = (struct SearchFrontierQueue *) malloc(sizeof(struct SearchFrontierQueue));
+	current->next->val = val;
+	current->next->next = NULL;
+}
+
+int deQueueSearchFrontier(struct SearchFrontierQueue **head)
+{
+	int returnPointer = -1;
+	struct SearchFrontierQueue *nextNode = NULL;
+
+	if (*head == NULL)
+	{
+		return -1;
+	}
+
+	nextNode = (*head)->next;
+	returnPointer = (*head)->val;
+	free(*head);
+	*head = nextNode;
+
+	return returnPointer;
 }
 
 void BFSSearch(int *IA, int *TA)
