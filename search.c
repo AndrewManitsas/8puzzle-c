@@ -2,18 +2,25 @@
 #include <stdlib.h>
 #include <time.h>
 
+//declared in main.c
+extern unsigned int nodesGenerated;
+extern unsigned int nodesGenerated;
+extern unsigned int solutionLength;
+extern double runtime; //in milliseconds
+
 int searchFrontierHead = 0, searchFrontierTail = 0;
 
-/*
-typedef struct TreeNode
+typedef struct TreeNode TreeNode;
+
+struct TreeNode
 {
 	int *state;
 	TreeNode *parentNode;
 	int action;
 	int pathCost;
-	int depth;
-} TreeNode;
-*/
+	int pathDepth;
+	//Maybe a pointer list with the children?	
+};
 
 void initializeSearchFrontierQueue(int *head, int *tail)
 {
@@ -58,4 +65,9 @@ void BFSSearch(int *IA, int *TA)
 		}
 		printf("\n------------\n");
 	}
+}
+
+void AstarSearch(int *IA, int *TA)
+{
+	printf("A* Search function called\n");
 }
