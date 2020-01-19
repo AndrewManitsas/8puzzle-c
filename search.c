@@ -8,6 +8,7 @@ extern unsigned int nodesGenerated;
 extern unsigned int solutionLength;
 extern double runtime; //in milliseconds
 
+/*
 int searchFrontierHead = 0, searchFrontierTail = 0;
 
 typedef struct TreeNode TreeNode;
@@ -63,6 +64,7 @@ int deQueueSearchFrontier(struct SearchFrontierQueue **head)
 
 	return returnPointer;
 }
+*/
 
 void BFSSearch(int *IA, int *TA)
 {
