@@ -3,7 +3,7 @@
 #include <time.h>
 
 //declared in main.c
-extern unsigned int nodesGenerated;
+extern unsigned int nodesExpanded;
 extern unsigned int nodesGenerated;
 extern unsigned int solutionLength;
 extern double runtime; //in milliseconds
@@ -22,6 +22,78 @@ struct Node
 	int cost;
 	int depth;
 };
+
+int validMovement(int *state, int movement)
+{
+	//See the movement definitions above
+
+	int array[3][3], i = 0, j = 0;
+	int possibleMove = -1; //1 for valid move, 0 for invalid move
+	int gapRow = -1, gapCol = -1;
+
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			array[i][j] = *state;
+			*state++;
+			//printf("Cell %d %d: %d\n", i, j, array[i][j]);
+
+			if (array[i][j] == 0)
+			{
+				gapRow = i;
+				gapCol = j;
+			}
+		}
+	}
+
+	if (movement == UP)
+	{
+		if ((gapRow - 1) > -1)
+		{
+			possibleMove = 1;
+		}
+		else
+		{
+			possibleMove = 0;
+		}
+	}
+	else if (movement == RIGHT)
+	{
+		if ((gapCol + 1) < 3)
+		{
+			possibleMove = 1;
+		}
+		else
+		{
+			possibleMove = 0;
+		}
+	}
+	else if (movement == DOWN)
+	{
+		if ((gapRow + 1) < 3)
+		{
+			possibleMove = 1;
+		}
+		else
+		{
+			possibleMove = 0;
+		}
+	}
+	else if (movement == LEFT)
+	{
+		if ((gapCol - 1) > -1)
+		{
+			possibleMove = 1;
+		}
+		else
+		{
+			possibleMove = 0;
+		}
+	}
+
+	return possibleMove;
+}
 
 //Used only for debugging and testing
 void testNode(int *IA, int *TA)
