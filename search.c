@@ -8,63 +8,11 @@ extern unsigned int nodesGenerated;
 extern unsigned int solutionLength;
 extern double runtime; //in milliseconds
 
-/*
-int searchFrontierHead = 0, searchFrontierTail = 0;
-
-typedef struct TreeNode TreeNode;
-typedef struct SearchFrontierQueue;
-
-struct TreeNode
-{
-	int *state;
-	TreeNode *parentNode;
-	int action;
-	int pathCost;
-	int pathDepth;
-	int children[4];
-};
-
-struct SearchFrontierQueue
-{
-	TreeNode *val;
-	struct SearchFrontierQueue *next;
-};
-
-struct SearchFrontierQueue *head = NULL;
-struct SearchFrontierQueue *tail = NULL;
-
-void enQueueSearchFrontier(struct SearchFrontierQueue *head, TreeNode *val)
-{
-	struct SearchFrontierQueue *current = head;
-
-	while (current->next != NULL)
-	{
-		current = current->next;
-	}
-	
-	current->next = (struct SearchFrontierQueue *) malloc(sizeof(struct SearchFrontierQueue));
-	current->next->val = val;
-	current->next->next = NULL;
-}
-
-int deQueueSearchFrontier(struct SearchFrontierQueue **head)
-{
-	int returnPointer = -1;
-	struct SearchFrontierQueue *nextNode = NULL;
-
-	if (*head == NULL)
-	{
-		return -1;
-	}
-
-	nextNode = (*head)->next;
-	returnPointer = (*head)->val;
-	free(*head);
-	*head = nextNode;
-
-	return returnPointer;
-}
-*/
+//movement definitions
+const int UP = 1;
+const int RIGHT = 2;
+const int DOWN = 3;
+const int LEFT = 4;
 
 struct Node
 {
@@ -75,6 +23,7 @@ struct Node
 	int depth;
 };
 
+//Used only for debugging and testing
 void testNode(int *IA, int *TA)
 {
 	struct Node child, father, *fatherPointer;

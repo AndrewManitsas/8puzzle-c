@@ -20,32 +20,8 @@ int main ()
 	srand((unsigned) time(&t));
 
 	randArrayInitialization(*initialArray);
-
-	//Check the array
-	/*
-	printf("Initialized array:\n------------\n");
-	for (i = 0; i < 3; i++)
-	{
-		for (j = 0; j < 3; j++)
-		{
-			printf(" %d |", initialArray[i][j]);
-		}
-		printf("\n------------\n");
-	}
-
-	printf("\nTarget array:\n------------\n");
-	for (i = 0; i < 3; i++)
-	{
-		for (j = 0; j < 3; j++)
-		{
-			printf(" %d |", targetArray[i][j]);
-		}
-		printf("\n------------\n");
-	}
-	*/
-
 	BFSSearch(*initialArray, *targetArray);
-	testNode(*initialArray, *targetArray);
+	//testNode(*initialArray, *targetArray);
 
 	return 0;
 }
