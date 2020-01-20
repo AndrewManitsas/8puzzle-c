@@ -2,12 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-//declared in main.c
-extern unsigned int nodesExpanded;
-extern unsigned int nodesGenerated;
-extern unsigned int solutionLength;
-extern double runtime; //in milliseconds
-
 //movement definitions
 const int UP = 1;
 const int RIGHT = 2;
@@ -26,6 +20,7 @@ struct Node
 int validMovement(int *state, int movement)
 {
 	//See the movement definitions above
+	//Returns 1 for valid move, 0 for invalid move
 
 	int array[3][3], i = 0, j = 0;
 	int possibleMove = -1; //1 for valid move, 0 for invalid move
