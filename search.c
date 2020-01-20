@@ -66,6 +66,37 @@ int deQueueSearchFrontier(struct SearchFrontierQueue **head)
 }
 */
 
+struct Node
+{
+	int *state;
+	struct Node *parent;
+	int action;
+	int cost;
+	int depth;
+};
+
+void testNode(int *IA, int *TA)
+{
+	struct Node child, father, *fatherPointer;
+
+	child.state = TA;
+	child.action = 1;
+	child.cost = 1;
+	child.depth = 1;
+	child.parent = &father;
+
+	father.state = IA;
+	father.action = 5;
+	father.cost = 0;
+	father.depth = 0;
+	father.parent = NULL;
+
+	fatherPointer = &father;
+	
+	printf("Child Action: %d\nChild Cost: %d\nChild Depth: %d\nChild Parent: %d\n\n", child.action, child.cost, child.depth, child.parent);
+	printf("Father Action: %d\nFather Cost: %d\nFather Depth: %d\nFather Parent: %d\n\n", fatherPointer->action, fatherPointer->cost, fatherPointer->depth, fatherPointer->parent);
+}
+
 void BFSSearch(int *IA, int *TA)
 {
 	int i = 0, j = 0;

@@ -45,6 +45,7 @@ int main ()
 	*/
 
 	BFSSearch(*initialArray, *targetArray);
+	testNode(*initialArray, *targetArray);
 
 	return 0;
 }
