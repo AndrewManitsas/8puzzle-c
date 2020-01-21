@@ -17,6 +17,25 @@ struct Node
 	int depth;
 };
 
+struct QueueElement
+{
+	struct Node currentElement;
+	struct QueueElement *next;
+};
+
+struct Queue
+{
+	struct Node *front;
+	struct Node *rear;
+};
+
+struct Queue* createSFQ(void)
+{
+	struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue));
+	q->front = q->rear = NULL;
+	return q;
+}
+
 int validMovement(int *state, int movement)
 {
 	//See the movement definitions above
