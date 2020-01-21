@@ -63,7 +63,6 @@ struct Node *removeFromQueue(struct Queue *Qpointer)
 	}
 
 	//IF Queue is not empty
-
 	//Store previous front and move front 1 place ahead
 	struct QueueElement *temp = Qpointer->front;
 	free(temp);
