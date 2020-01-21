@@ -19,14 +19,14 @@ struct Node
 
 struct QueueElement
 {
-	struct Node currentElement;
+	struct Node *currentElement;
 	struct QueueElement *next;
 };
 
 struct Queue
 {
-	struct Node *front;
-	struct Node *rear;
+	struct QueueElement *front;
+	struct QueueElement *rear;
 };
 
 struct Queue *createQueue()
@@ -34,6 +34,48 @@ struct Queue *createQueue()
 	struct Queue *q = (struct Queue*) malloc(sizeof(struct Queue));
 	q->front = q->rear = NULL;
 	return q;
+}
+
+void addToQueue(struct Queue *Qpointer, struct Node *NodeToAdd)
+{
+	struct QueueElement *temp = (struct QueueElement*) malloc(sizeof(struct QueueElement));
+	temp->currentElement = NodeToAdd;
+	temp->next = NULL;
+
+	//If queue is empty
+	if ((Qpointer->front == NULL) && (Qpointer->rear == NULL))
+	{
+		Qpointer->front = Qpointer->rear = temp;
+		return;
+	}
+
+	//If the queue is not empty
+	Qpointer->rear->next = temp;
+	Qpointer->rear = temp;
+}
+
+struct Node *removeFromQueue(struct Queue *Qpointer)
+{
+	//IF Queue is empty
+	if (Qpointer->front == NULL)
+	{
+		return NULL;
+	}
+
+	//IF Queue is not empty
+
+	//Store previous front and move front 1 place ahead
+	struct QueueElement *temp = Qpointer->front;
+	free(temp);
+	Qpointer->front = Qpointer->front->next;
+
+	//If front = null then change rear = null
+	if (Qpointer->front == NULL)
+	{
+		Qpointer->rear = NULL;
+	}
+
+	return temp->currentElement;
 }
 
 int validMovement(int *state, int movement)
