@@ -29,7 +29,7 @@ struct Queue
 	struct Node *rear;
 };
 
-struct Queue *createSFQ()
+struct Queue *createQueue()
 {
 	struct Queue *q = (struct Queue*) malloc(sizeof(struct Queue));
 	q->front = q->rear = NULL;
