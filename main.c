@@ -4,6 +4,7 @@
 
 #include "misc.h"
 #include "search.h"
+#include "queue.h"
 
 unsigned int nodesExpanded = 0;
 unsigned int nodesGenerated = 0;
