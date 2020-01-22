@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "queue.h"
+
 //movement definitions
 const int UP = 1;
 const int RIGHT = 2;
