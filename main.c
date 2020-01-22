@@ -23,6 +23,7 @@ int main ()
 	randArrayInitialization(*initialArray);
 	//BFSSearch(*initialArray, *targetArray);
 	//testNode(*initialArray, *targetArray);
+	testQueue(*initialArray, *targetArray);
 
 	/*
 	for (i = 1; i < 5; i++)

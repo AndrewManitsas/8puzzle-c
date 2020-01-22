@@ -173,6 +173,65 @@ void testNode(int *IA, int *TA)
 	printf("Father Action: %d\nFather Cost: %d\nFather Depth: %d\nFather Parent: %d\n\n", fatherPointer->action, fatherPointer->cost, fatherPointer->depth, fatherPointer->parent);
 }
 
+void testQueue(int *IA, int *TA)
+{
+	printf("Called test queue function\n");
+	
+	int i = 0, j = 0;
+	int initialArray[3][3] = {{-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1}};
+	int targetArray[3][3] = {{-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1}};
+
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			initialArray[i][j] = *IA;
+			targetArray[i][j] = *TA;
+			*IA++;
+			*TA++;
+		}   
+	}
+
+	struct Queue *q = createQueue();
+	struct Node *newNode = (struct Node*) malloc(sizeof(struct Node));
+	newNode->state = IA;
+	newNode->action = UP;
+	newNode->cost = 1;
+	newNode->depth = 1;
+	newNode->parent = NULL;
+	addToQueue(q, newNode);
+
+	struct Node *newNode2 = (struct Node*) malloc(sizeof(struct Node));
+	newNode2->state = IA;
+	newNode2->action = RIGHT;
+	newNode2->cost = 2;
+	newNode2->depth = 2;
+	newNode2->parent = NULL;
+	addToQueue(q, newNode2);
+
+	struct Node *newNode3 = (struct Node*) malloc(sizeof(struct Node));
+	newNode3->state = IA;
+	newNode3->action = DOWN;
+	newNode3->cost = 3;
+	newNode3->depth = 3;
+	newNode3->parent = NULL;
+	addToQueue(q, newNode3);
+
+	struct Node *newNode4 = (struct Node*) malloc(sizeof(struct Node));
+	newNode4->state = IA;
+	newNode4->action = LEFT;
+	newNode4->cost = 4;
+	newNode4->depth = 4;
+	newNode4->parent = NULL;
+	addToQueue(q, newNode4);
+
+	for (i = 1; i < 5; i++)
+	{
+		printf("Queue Position %d | Action %d | Cost %d | Depth %d | Parent %d\n", i, q->front->currentElement->action, q->front->currentElement->cost, q->front->currentElement->depth, q->front->currentElement->parent);
+		q->front = q->front->next;
+	}
+}
+
 void BFSSearch(int *IA, int *TA)
 {
 	int i = 0, j = 0;
