@@ -29,6 +29,17 @@ struct Queue
 	struct QueueElement *rear;
 };
 
+struct Node *newNode(int *state, struct Node *parent, int action, int cost, int depth)
+{
+	struct Node *temp = (struct Node*) malloc(sizeof(struct Node));
+	temp->state = state;
+	temp->parent = parent;
+	temp->action = action;
+	temp->cost = cost;
+	temp->depth = depth;
+	return temp;
+}
+
 struct Queue *createQueue()
 {
 	struct Queue *q = (struct Queue*) malloc(sizeof(struct Queue));
@@ -173,6 +184,7 @@ void testNode(int *IA, int *TA)
 	printf("Father Action: %d\nFather Cost: %d\nFather Depth: %d\nFather Parent: %d\n\n", fatherPointer->action, fatherPointer->cost, fatherPointer->depth, fatherPointer->parent);
 }
 
+//Used only for debugging and testing
 void testQueue(int *IA, int *TA)
 {
 	printf("Called test queue function\n");

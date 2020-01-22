@@ -4,6 +4,11 @@
 
 #include "queue.h"
 
+extern unsigned int nodesExpanded;
+extern unsigned int nodesGenerated;
+extern unsigned int solutionLength;
+extern double runtime; //in milliseconds
+
 //movement definitions
 const int UP = 1;
 const int RIGHT = 2;
@@ -15,6 +20,10 @@ void BFSSearch(int *IA, int *TA)
 	int i = 0, j = 0;
 	int initialArray[3][3] = {{-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1}};
 	int targetArray[3][3] = {{-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1}};
+	struct Queue *SearchFrontier = createQueue();
+	struct Queue *VisitedList = createQueue();
+
+	nodesExpanded = nodesGenerated = solutionLength = 0;
 
 	for (i = 0; i < 3; i++)
 	{
@@ -24,10 +33,10 @@ void BFSSearch(int *IA, int *TA)
 			targetArray[i][j] = *TA;
 			*IA++;
 			*TA++;
-		}   
+		}
 	}
 
-	printf("BFS Search function called\n");
+	printf("BFS Search function called\n\n");
 	
 	printf("Initialized array:\n------------\n");
 	for (i = 0; i < 3; i++)

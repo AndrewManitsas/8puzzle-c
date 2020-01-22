@@ -22,9 +22,9 @@ int main ()
 	srand((unsigned) time(&t));
 
 	randArrayInitialization(*initialArray);
-	//BFSSearch(*initialArray, *targetArray);
+	BFSSearch(*initialArray, *targetArray);
 	//testNode(*initialArray, *targetArray);
-	testQueue(*initialArray, *targetArray);
+	//testQueue(*initialArray, *targetArray);
 
 	/*
 	for (i = 1; i < 5; i++)
