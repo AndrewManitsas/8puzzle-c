@@ -323,6 +323,7 @@ void BFSSearch(int *IA, int *TA)
 
 	struct Node *initialNode = newNode(IA, NULL, 0, 0, 0);
 	addToQueue(SearchFrontier, initialNode);
+	free(initialNode);
 
 	do
 	{
