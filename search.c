@@ -337,7 +337,7 @@ void BFSSearch(int *IA, int *TA)
 		struct Node *nodeFromSearchQueue = removeFromQueue(SearchFrontier);
 		addToQueue(VisitedList, nodeFromSearchQueue);
 
-		allMatch = arrayMatching(nodeFromSearchQueue->state, TA);
+		allMatch = arrayMatching(nodeFromSearchQueue->state, *TA);
 
 		if (allMatch == 1)
 		{
