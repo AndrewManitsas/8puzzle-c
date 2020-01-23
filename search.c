@@ -106,7 +106,7 @@ int validMovement(int *state, int movement)
 	{
 		for (j = 0; j < 3; j++)
 		{
-			array[i][j] = *state;
+			array[i][j] = state;
 			*state++;
 			//printf("Cell %d %d: %d\n", i, j, array[i][j]);
 
@@ -260,8 +260,8 @@ int arrayMatching(int *IA, int *TA)
 	{
 		for (j = 0; j < 3; j++)
 		{
-			initialArray[i][j] = *IA;
-			targetArray[i][j] = *TA;
+			initialArray[i][j] = IA;
+			targetArray[i][j] = TA;
 			*IA++;
 			*TA++;
 			matchingTable[i][j] = initialArray[i][j] - targetArray[i][j];
